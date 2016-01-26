@@ -20,7 +20,7 @@ audio, video {
 }
 
 p {
-	white-space: pre;
+	white-space: pre-wrap;
 }
 
 .welcome-screen {
@@ -30,12 +30,12 @@ p {
 	position: fixed;
 	z-index: 5; 
 }
-.welcome-screen.hidden {
+.hidden {
 	background-color: white;
 	z-index: -5;
 }
 .welcome-text {
-	width: 32rem;
+	width: 36rem;
 	position: absolute;
 	top: 40%;
 	left: 10%;

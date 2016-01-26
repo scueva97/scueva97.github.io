@@ -1,14 +1,19 @@
-var welcomeMessages = ["Welcome ", "to my website"];
+var welcomeMessages = ["Welcome ", "to my website.", "Click anywhere"];
 var lines = new Array();
 for(i = 0; i < welcomeMessages.length; i++) {
 	lines[i] = "wmline" + i;
 }
 $(document).ready(function() {
+	welcomeAnim();
+
+});
+
+function welcomeAnim() {
 	var idxLine = 0;
 	var idxChar = 0;
 	var flicker = true;
 	var flickerId;
-	var printId = setInterval(periodicalPrint, 250);
+	var printId = setInterval(periodicalPrint, 200);
 
 	function periodicalPrint() {
 		if (idxChar == 0 && idxLine > 0) {
@@ -40,21 +45,23 @@ $(document).ready(function() {
 	function charFlicker(line, message, lastChar) {
 		if (flicker) {
 			$("#"+line).html(message 
-			+ '<span style="background-color: #FFFFFF; color: #000000">' 
+			+ '<span style="background-color: #000000; color: #FFFFFF">' 
 			+ lastChar +'</span>');
 			flicker = false;
 		} else {
 			$("#"+line).html(message 
-			+ '<span style="background-color: #000000; color: #FFFFFF">' 
+			+ '<span style="background-color: #FFFFFF; color: #000000">' 
 			+ lastChar +'</span>');
 			flicker = true;
 		}
 	}
 
-	$(".welcome-screen").on("click", function() {
+	$('.welcome-screen').on('click', function() {
 		if (flickerId != undefined) {
+			$(this).toggleClass('hidden');
+			$('.welcome-message').remove();
+
 			clearInterval(flickerId);
 		}
 	});
-
-});
+}
