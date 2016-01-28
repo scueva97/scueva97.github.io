@@ -1,9 +1,10 @@
-var welcomeMessages = ["Welcome ", "to my website.", "Click anywhere"];
+var welcomeMessages = ["Website ", "progress...", "hello"]
 var lines = new Array();
 for(i = 0; i < welcomeMessages.length; i++) {
 	lines[i] = "wmline" + i;
 }
 $(document).ready(function() {
+	fullpageSetUp();
 	welcomeAnim();
 
 });
@@ -13,7 +14,7 @@ function welcomeAnim() {
 	var idxChar = 0;
 	var flicker = true;
 	var flickerId;
-	var printId = setInterval(periodicalPrint, 200);
+	var printId = setInterval(periodicalPrint, 150);
 
 	function periodicalPrint() {
 		if (idxChar == 0 && idxLine > 0) {
@@ -36,6 +37,7 @@ function welcomeAnim() {
 				console.log("Stop");
 				clearInterval(printId);
 				flickerId = setInterval(charFlicker, 500, line, message, lastChar);
+				setTimeout(finishLoadScreen, 2000);
 			} else {
 				idxChar = 0;
 			}
@@ -56,12 +58,84 @@ function welcomeAnim() {
 		}
 	}
 
-	$('.welcome-screen').on('click', function() {
-		if (flickerId != undefined) {
-			$(this).toggleClass('hidden');
-			$('.welcome-message').remove();
+	$('.welcome-screen').on('click', finishLoadScreen);
 
-			clearInterval(flickerId);
-		}
-	});
+	function finishLoadScreen() {
+		$('.welcome-screen').fadeOut(500, function() {console.log("Fade")});
+		// if (flickerId != undefined) {
+		// 	$(this).toggleClass('hidden');
+		// 	$('.welcome-message').remove();
+		// 	$(".welcome-screen").animate({
+		// 		"bottom": "0px",
+		// 	}, 4000, function() {
+		// 		console.log("Anim");
+		// 	}); 
+		// 	clearInterval(flickerId);
+		// }
+	}
+
+	function slideUpFirstPage() {
+
+	}
+}
+
+function fullpageSetUp() {
+	$('#fullpage').fullpage({
+        //Navigation
+        menu: '#menu',
+        lockAnchors: false,
+        anchors:['firstPage', 'secondPage'],
+        navigation: false,
+        navigationPosition: 'right',
+        navigationTooltips: ['firstSlide', 'secondSlide'],
+        showActiveTooltip: false,
+        slidesNavigation: true,
+        slidesNavPosition: 'bottom',
+
+        //Scrolling
+        css3: true,
+        scrollingSpeed: 700,
+        autoScrolling: true,
+        fitToSection: true,
+        fitToSectionDelay: 1000,
+        scrollBar: false,
+        easing: 'easeInOutCubic',
+        easingcss3: 'ease',
+        loopBottom: false,
+        loopTop: false,
+        loopHorizontal: true,
+        continuousVertical: false,
+        normalScrollElements: '#element1, .element2',
+        scrollOverflow: false,
+        touchSensitivity: 15,
+        normalScrollElementTouchThreshold: 5,
+
+        //Accessibility
+        keyboardScrolling: true,
+        animateAnchor: true,
+        recordHistory: true,
+
+        //Design
+        // controlArrows: true,
+        // verticalCentered: true,
+        // resize : false,
+        sectionsColor : ['#385380', '#43A367', '#A8D966', '#C6F1A2'],
+        // paddingTop: '3em',
+        // paddingBottom: '10px',
+        // fixedElements: '#header, .footer',
+        // responsiveWidth: 0,
+        // responsiveHeight: 0,
+
+        //Custom selectors
+        sectionSelector: '.section',
+        slideSelector: '.slide',
+
+        //events
+        onLeave: function(index, nextIndex, direction){},
+        afterLoad: function(anchorLink, index){},
+        afterRender: function(){},
+        afterResize: function(){},
+        afterSlideLoad: function(anchorLink, index, slideAnchor, slideIndex){},
+        onSlideLeave: function(anchorLink, index, slideIndex, direction, nextSlideIndex){}
+    });
 }
