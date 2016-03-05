@@ -30,7 +30,7 @@ body {
   overflow-y: scroll;
   width: 100%; }
 
-#welcome-screen {
+.welcome-screen {
   height: 100vh;
   width: 100vw;
   background-color: #385380;
@@ -41,7 +41,7 @@ body {
 	background-color: white;
 	z-index: -5;
 }*/
-#welcome-text {
+.welcome-text {
   width: 36rem;
   position: absolute;
   top: 40%;
@@ -67,4 +67,4 @@ body {
   width: 20%;
   height: 20%; }
 
-/*# sourceMappingURL=main.css.map */
+/*# sourceMappingURL=index.css.map */

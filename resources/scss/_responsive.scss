@@ -1,0 +1,11 @@
+@media screen and (max-width: $tablet-landscape-max) {
+	html, body {
+		font-size: 16px;
+	}
+}
+
+@media screen and (max-width: $phone-landscape-max) {
+	html, body {
+		font-size: 14px;
+	}
+}

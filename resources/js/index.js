@@ -1,8 +1,10 @@
-var welcomeMessages = ["Website ", "progress...", "hello"]
+var welcomeMessages = ["Website in", "progress..."]
 var lines = new Array();
 for(i = 0; i < welcomeMessages.length; i++) {
 	lines[i] = "wmline" + i;
 }
+var colorPattern = ['#385380', '#43A367', '#A8D966', '#C6F1A2'];
+
 $(document).ready(function() {
 	fullpageSetUp();
 	welcomeAnim();
@@ -14,7 +16,7 @@ function welcomeAnim() {
 	var idxChar = 0;
 	var flicker = true;
 	var flickerId;
-	var printId = setInterval(periodicalPrint, 150);
+	var printId = setInterval(periodicalPrint, 100);
 
 	function periodicalPrint() {
 		if (idxChar == 0 && idxLine > 0) {
@@ -26,15 +28,16 @@ function welcomeAnim() {
 		var line = lines[idxLine];
 
 		$("#"+line).html(message 
-			+ '<span style="background-color: #FFFFFF; color: #000000">' 
+			+ '<span style="background-color: ' 
+			+ colorPattern[2] + '; color: ' + colorPattern[0] + '">' 
 			+ lastChar +'</span>');
-		console.log(idxChar.toString() + " " + idxLine.toString());
+		//console.log(idxChar.toString() + " " + idxLine.toString());
 
 		idxChar++;
 		if (idxChar >= welcomeMessages[idxLine].length) {
 			idxLine++;
 			if (idxLine >= welcomeMessages.length) {
-				console.log("Stop");
+				//console.log("Stop");
 				clearInterval(printId);
 				flickerId = setInterval(charFlicker, 500, line, message, lastChar);
 				setTimeout(finishLoadScreen, 2000);
@@ -47,25 +50,30 @@ function welcomeAnim() {
 	function charFlicker(line, message, lastChar) {
 		if (flicker) {
 			$("#"+line).html(message 
-			+ '<span style="background-color: #000000; color: #FFFFFF">' 
+			+ '<span style="background-color: ' 
+			+ colorPattern[0] + '; color: ' + colorPattern[2] + '">' 
 			+ lastChar +'</span>');
 			flicker = false;
 		} else {
 			$("#"+line).html(message 
-			+ '<span style="background-color: #FFFFFF; color: #000000">' 
+			+ '<span style="background-color: ' 
+			+ colorPattern[2] + '; color: ' + colorPattern[0] + '">' 
 			+ lastChar +'</span>');
 			flicker = true;
 		}
 	}
 
-	$('.welcome-screen').on('click', finishLoadScreen);
+	$('#welcome-screen').on('click', finishLoadScreen);
 
 	function finishLoadScreen() {
-		$('.welcome-screen').fadeOut(500, function() {console.log("Fade")});
+		$('#welcome-screen').fadeOut(500, function() {
+			console.log("Fade");
+			clearInterval(flickerId);
+		});
 		// if (flickerId != undefined) {
 		// 	$(this).toggleClass('hidden');
-		// 	$('.welcome-message').remove();
-		// 	$(".welcome-screen").animate({
+		// 	$('#welcome-message').remove();
+		// 	$("#welcome-screen").animate({
 		// 		"bottom": "0px",
 		// 	}, 4000, function() {
 		// 		console.log("Anim");
@@ -84,7 +92,7 @@ function fullpageSetUp() {
         //Navigation
         menu: '#menu',
         lockAnchors: false,
-        anchors:['firstPage', 'secondPage'],
+        anchors:['firstPage', 'secondPage', 'thirdPage', 'fourthPage'],
         navigation: false,
         navigationPosition: 'right',
         navigationTooltips: ['firstSlide', 'secondSlide'],
@@ -119,7 +127,7 @@ function fullpageSetUp() {
         // controlArrows: true,
         // verticalCentered: true,
         // resize : false,
-        sectionsColor : ['#385380', '#43A367', '#A8D966', '#C6F1A2'],
+        sectionsColor : colorPattern,
         // paddingTop: '3em',
         // paddingBottom: '10px',
         // fixedElements: '#header, .footer',

@@ -3,8 +3,10 @@
 <head>
 	<meta charset="utf-8">
 	<title>My Website</title>
+	<!-- Fonts: Roboto Mono, Source Code Pro -->
 	<link href='https://fonts.googleapis.com/css?family=Roboto+Mono:400,700' rel='stylesheet' type='text/css'>
 	<link href='https://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
+
 	<link rel="stylesheet" type="text/css" href="resources/css/main.css"/>
 	<!-- Fullpage plugin -->
 	<link rel="stylesheet" type="text/css" href="resources/css/jquery.fullPage.css"/>
@@ -14,15 +16,29 @@
 	<script type="text/javascript" src="resources/js/jquery.fullPage.js"></script>
 </head>
 <body>
+	<!-- Google Tag Manager -->
+	<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-NSRQTF"
+	height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+	'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+	})(window,document,'script','dataLayer','GTM-NSRQTF');</script>
+	<!-- End Google Tag Manager -->
+
 	<div id="fullpage">
+
 	<div class="section">
-		<div class="welcome-screen">
-			<div class="welcome-text">
+		<div id="welcome-screen">
+			<div id="welcome-text">
 				<p id="wmline0" class="welcome-message"></p>
 				<p id="wmline1" class="welcome-message"></p>
 				<p id="wmline2" class="welcome-message"></p>
 			</div>
 		</div>	
+		<div id="container">
+			<img id="puppies" src="resources/img/puppies.jpg">
+		</div>
 	</div>	
 	<div class="section">
 		
@@ -33,6 +49,7 @@
 	<div class="section">
 		
 	</div>
+
 	</div>
 	<script type="text/javascript" src="resources/js/index.js"></script>
 </body>
