@@ -13,6 +13,8 @@ $(document).ready(function() {
 
 	if (getUrlParameter(URL_WLCM_PARAM) !== URL_WLCM_PARAM_STOP)
 		welcomeAnim();
+	else
+		$('#slide-up-wrapper').show();
 });
 
 function toggleScrolling(toggle) {
