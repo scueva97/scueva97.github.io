@@ -13,8 +13,11 @@ $(document).ready(function() {
 
 	if (getUrlParameter(URL_WLCM_PARAM) !== URL_WLCM_PARAM_STOP)
 		welcomeAnim();
-	else
+	else {
+		//$('#slide-up-wrapper').css("display", "block");
 		$('#slide-up-wrapper').show();
+		$('#welcome-screen').hide();
+	}
 });
 
 function toggleScrolling(toggle) {
