@@ -10,7 +10,9 @@ var URL_WLCM_PARAM_STOP = "done";
 
 $(document).ready(function() {
 	fullpageSetUp();
-	welcomeAnim();
+
+	if (getUrlParameter(URL_WLCM_PARAM) !== URL_WLCM_PARAM_STOP)
+		welcomeAnim();
 });
 
 function toggleScrolling(toggle) {
@@ -80,7 +82,7 @@ function welcomeAnim() {
 			clearInterval(flickerId);
 			slideUpFirstPage();
 			toggleScrolling(true);
-			// setUrlParameter(URL_WLCM_PARAM, URL_WLCM_PARAM_STOP);
+			setUrlParameter(URL_WLCM_PARAM, URL_WLCM_PARAM_STOP);
 		});
 	}
 
@@ -93,47 +95,53 @@ function welcomeAnim() {
 * Adds the given parameter to the url
 * from http://stackoverflow.com/questions/13063838/add-change-parameter-of-url-and-redirect-to-the-new-url
 */
-// function setUrlParameter(paramName, paramValue)
-// {
-//     var url = window.location.href;
-//     var hash = location.hash;
-//     url = url.replace(hash, '');
-//     if (url.indexOf(paramName + "=") >= 0)
-//     {
-//         var prefix = url.substring(0, url.indexOf(paramName));
-//         var suffix = url.substring(url.indexOf(paramName));
-//         suffix = suffix.substring(suffix.indexOf("=") + 1);
-//         suffix = (suffix.indexOf("&") >= 0) ? suffix.substring(suffix.indexOf("&")) : "";
-//         url = prefix + paramName + "=" + paramValue + suffix;
-//     }
-//     else
-//     {
-//     if (url.indexOf("?") < 0)
-//         url += "?" + paramName + "=" + paramValue;
-//     else
-//         url += "&" + paramName + "=" + paramValue;
-//     }
-//     window.location.href = url + hash;
-// }
+function setUrlParameter(paramName, paramValue) {
+    var url = window.location.href;
+    var domain = getHostname(url);
+    var hash = location.hash;
+    url = url.replace(hash, '');
+    url = url.replace(domain, '');
+    if (url.indexOf(paramName + "=") >= 0)
+    {
+        var prefix = url.substring(0, url.indexOf(paramName));
+        var suffix = url.substring(url.indexOf(paramName));
+        suffix = suffix.substring(suffix.indexOf("=") + 1);
+        suffix = (suffix.indexOf("&") >= 0) ? suffix.substring(suffix.indexOf("&")) : "";
+        url = prefix + paramName + "=" + paramValue + suffix;
+    }
+    else
+    {
+    if (url.indexOf("?") < 0)
+        url += "?" + paramName + "=" + paramValue;
+    else
+        url += "&" + paramName + "=" + paramValue;
+    }
+    window.history.pushState("Done welcoming", "Done welcoming", url + hash);
+
+    function getHostname(url) {
+    	var m = url.match(/^http:\/\/[^/]+/);
+    	return m ? m[0] : null;
+	}
+}
 
 /**
 * Gets the paramter value from the url
 * from http://stackoverflow.com/questions/19491336/get-url-parameter-jquery-or-how-to-get-query-string-values-in-js
 */
-// function getUrlParameter(sParam) {
-//     var sPageURL = decodeURIComponent(window.location.search.substring(1)),
-//         sURLVariables = sPageURL.split('&'),
-//         sParameterName,
-//         i;
+function getUrlParameter(sParam) {
+    var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+        sURLVariables = sPageURL.split('&'),
+        sParameterName,
+        i;
 
-//     for (i = 0; i < sURLVariables.length; i++) {
-//         sParameterName = sURLVariables[i].split('=');
+    for (i = 0; i < sURLVariables.length; i++) {
+        sParameterName = sURLVariables[i].split('=');
 
-//         if (sParameterName[0] === sParam) {
-//             return sParameterName[1] === undefined ? true : sParameterName[1];
-//         }
-//     }
-// }
+        if (sParameterName[0] === sParam) {
+            return sParameterName[1] === undefined ? true : sParameterName[1];
+        }
+    }
+}
 
 function fullpageSetUp() {
 	$('#fullpage').fullpage({
