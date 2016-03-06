@@ -4,14 +4,25 @@ for(i = 0; i < welcomeMessages.length; i++) {
 	lines[i] = "wmline" + i;
 }
 var colorPattern = ['#385380', '#43A367', '#A8D966', '#C6F1A2'];
+// Parameter name and value to indicate the user has already been welcomed
+var URL_WLCM_PARAM = "wlcm";
+var URL_WLCM_PARAM_STOP = "done";
 
 $(document).ready(function() {
 	fullpageSetUp();
 	welcomeAnim();
-
 });
 
+function toggleScrolling(toggle) {
+	$.fn.fullpage.setAllowScrolling(toggle);
+	$.fn.fullpage.setKeyboardScrolling(toggle);
+}
+
 function welcomeAnim() {
+	//$('#welcome-screen').on('click', finishLoadScreen);
+
+	toggleScrolling(false);
+
 	var idxLine = 0;
 	var idxChar = 0;
 	var flicker = true;
@@ -62,66 +73,103 @@ function welcomeAnim() {
 			flicker = true;
 		}
 	}
-
-	$('#welcome-screen').on('click', finishLoadScreen);
-
+	
 	function finishLoadScreen() {
 		$('#welcome-screen').fadeOut(500, function() {
 			console.log("Fade");
 			clearInterval(flickerId);
+			slideUpFirstPage();
+			toggleScrolling(true);
+			// setUrlParameter(URL_WLCM_PARAM, URL_WLCM_PARAM_STOP);
 		});
-		// if (flickerId != undefined) {
-		// 	$(this).toggleClass('hidden');
-		// 	$('#welcome-message').remove();
-		// 	$("#welcome-screen").animate({
-		// 		"bottom": "0px",
-		// 	}, 4000, function() {
-		// 		console.log("Anim");
-		// 	}); 
-		// 	clearInterval(flickerId);
-		// }
 	}
 
 	function slideUpFirstPage() {
-
+		$('#slide-up-wrapper').toggle("slide", { direction: "down" }, 1500);
 	}
 }
+
+/**
+* Adds the given parameter to the url
+* from http://stackoverflow.com/questions/13063838/add-change-parameter-of-url-and-redirect-to-the-new-url
+*/
+// function setUrlParameter(paramName, paramValue)
+// {
+//     var url = window.location.href;
+//     var hash = location.hash;
+//     url = url.replace(hash, '');
+//     if (url.indexOf(paramName + "=") >= 0)
+//     {
+//         var prefix = url.substring(0, url.indexOf(paramName));
+//         var suffix = url.substring(url.indexOf(paramName));
+//         suffix = suffix.substring(suffix.indexOf("=") + 1);
+//         suffix = (suffix.indexOf("&") >= 0) ? suffix.substring(suffix.indexOf("&")) : "";
+//         url = prefix + paramName + "=" + paramValue + suffix;
+//     }
+//     else
+//     {
+//     if (url.indexOf("?") < 0)
+//         url += "?" + paramName + "=" + paramValue;
+//     else
+//         url += "&" + paramName + "=" + paramValue;
+//     }
+//     window.location.href = url + hash;
+// }
+
+/**
+* Gets the paramter value from the url
+* from http://stackoverflow.com/questions/19491336/get-url-parameter-jquery-or-how-to-get-query-string-values-in-js
+*/
+// function getUrlParameter(sParam) {
+//     var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+//         sURLVariables = sPageURL.split('&'),
+//         sParameterName,
+//         i;
+
+//     for (i = 0; i < sURLVariables.length; i++) {
+//         sParameterName = sURLVariables[i].split('=');
+
+//         if (sParameterName[0] === sParam) {
+//             return sParameterName[1] === undefined ? true : sParameterName[1];
+//         }
+//     }
+// }
 
 function fullpageSetUp() {
 	$('#fullpage').fullpage({
         //Navigation
-        menu: '#menu',
-        lockAnchors: false,
+        // menu: '#menu',
+        // lockAnchors: false,
         anchors:['firstPage', 'secondPage', 'thirdPage', 'fourthPage'],
-        navigation: false,
-        navigationPosition: 'right',
-        navigationTooltips: ['firstSlide', 'secondSlide'],
-        showActiveTooltip: false,
-        slidesNavigation: true,
-        slidesNavPosition: 'bottom',
+        // navigation: false,
+        // navigationPosition: 'right',
+        // navigationTooltips: ['firstSlide', 'secondSlide'],
+        // showActiveTooltip: false,
+        // slidesNavigation: true,
+        // slidesNavPosition: 'bottom',
 
         //Scrolling
-        css3: true,
-        scrollingSpeed: 700,
-        autoScrolling: true,
-        fitToSection: true,
-        fitToSectionDelay: 1000,
+        // css3: true,
+        // scrollingSpeed: 700,
+        // autoScrolling: true,
+        // fitToSection: true,
+        // fitToSectionDelay: 1000,
         scrollBar: false,
-        easing: 'easeInOutCubic',
-        easingcss3: 'ease',
-        loopBottom: false,
-        loopTop: false,
-        loopHorizontal: true,
-        continuousVertical: false,
-        normalScrollElements: '#element1, .element2',
-        scrollOverflow: false,
-        touchSensitivity: 15,
-        normalScrollElementTouchThreshold: 5,
+        // easing: 'easeInOutCubic',
+        // easingcss3: 'ease',
+        // loopBottom: false,
+        // loopTop: false,
+        // loopHorizontal: true,
+        // continuousVertical: false,
+        // normalScrollElements: '#element1, .element2',
+        // scrollOverflow: false,
+        // touchSensitivity: 15,
+        // normalScrollElementTouchThreshold: 5,
 
         //Accessibility
-        keyboardScrolling: true,
-        animateAnchor: true,
-        recordHistory: true,
+        // keyboardScrolling: true,
+        // animateAnchor: true,
+        recordHistory: false,
 
         //Design
         // controlArrows: true,
@@ -135,8 +183,8 @@ function fullpageSetUp() {
         // responsiveHeight: 0,
 
         //Custom selectors
-        sectionSelector: '.section',
-        slideSelector: '.slide',
+        // sectionSelector: '.section',
+        // slideSelector: '.slide',
 
         //events
         onLeave: function(index, nextIndex, direction){},

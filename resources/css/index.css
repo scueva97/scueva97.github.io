@@ -18,53 +18,102 @@ audio, video {
   font: inherit;
   vertical-align: baseline; }
 
+html, body {
+  background-color: #385380; }
+
+/*h1 {
+  border-bottom: 1px solid $gray;
+  margin-bottom: 1rem;
+  margin-top: 5rem;
+  padding-bottom: 1rem;
+}
+
+h2 {
+  padding-bottom: 0.5rem;
+  margin-bottom: 2rem;
+}*/
+.content {
+  margin: 0 auto;
+  max-width: 748px; }
+
+#slide-up-wrapper {
+  position: absolute;
+  display: none;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  line-height: 300px;
+  font-size: 50px;
+  text-align: center; }
+
+/*html, body {
+  background-color: $main-color1;
+}*/
 p {
   white-space: pre-wrap; }
 
-html, body {
-  background-color: #A3F7BF; }
+#welcome-screen {
+  background-color: #385380; }
 
-body {
-  min-height: 100%;
-  position: fixed;
-  overflow-y: scroll;
-  width: 100%; }
+.welcome-message {
+  font-family: "Roboto Mono";
+  font-size: 4rem;
+  color: #A8D966; }
 
-.welcome-screen {
+/*h1 {
+  font-family: "Playfair Display";
+  font-size: 4rem;
+  line-height: 4rem;
+}
+
+a {
+  color: $blue;
+}
+
+h2 {
+  color: $gray;
+  font-family: "Roboto Condensed";
+  font-style: italic;
+  font-weight: 300;
+
+  a {
+    color: $gray;
+  }
+}
+*/
+/*Functions!!*/
+/*a:hover {
+  color: lighten($blue, 20%);
+}
+
+.content {
+  font-family: "Roboto Condensed";
+  font-size: 1rem;
+  line-height: 1.618rem;
+}*/
+/* Position and size of elements */
+#welcome-screen {
   height: 100vh;
   width: 100vw;
-  background-color: #385380;
   position: relative;
   z-index: 5; }
 
-/*.hidden {
-	background-color: white;
-	z-index: -5;
-}*/
-.welcome-text {
+#welcome-text {
   width: 36rem;
   position: absolute;
   top: 40%;
   left: 10%; }
 
-.welcome-message {
-  font-family: Roboto Mono;
-  font-size: 4rem;
-  color: #A8D966; }
-
-#container {
-  position: absolute;
-  width: 50%;
-  height: 500px;
-  line-height: 300px;
-  font-size: 50px;
-  text-align: center;
-  /*    left: 50%;
-      top: 100px;*/
-  /*margin-left: -25%;*/ }
-
 #puppies {
-  width: 20%;
-  height: 20%; }
+  width: 25%;
+  height: 25%; }
+
+@media screen and (max-width: 1024px) {
+  html, body {
+    font-size: 16px; } }
+@media screen and (max-width: 640px) {
+  html, body {
+    font-size: 14px; } }
 
 /*# sourceMappingURL=index.css.map */

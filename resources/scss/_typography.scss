@@ -1,17 +1,22 @@
 $roboto: 'Roboto Mono';
 $scp: 'Source Code Pro';
 
-html, body {
-  font-size: 18px;
+/*html, body {
+  background-color: $main-color1;
+}*/
+
+p {
+  white-space: pre-wrap; 
 }
 
 #welcome-screen {
-  background-color: #385380;
+  background-color: $main-color1;
 }
 
 .welcome-message {
-  font-family: Roboto Mono;
+  font-family: $roboto;
   font-size: 4rem;
+  color: $main-color3;
 }
 
 /*h1 {

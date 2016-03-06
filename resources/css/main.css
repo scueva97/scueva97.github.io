@@ -1,70 +1,12 @@
-html, body, div, span, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote,
-pre, a, abbr, acronym, address, big,
-cite, code, del, dfn, em, img, ins,
-kbd, q, samp, small, strike, strong,
-sub, sup, tt, var, b, i, dl, dt, dd,
-ol, ul, li, fieldset, form, label,
-legend, table, caption, tbody, tfoot,
-thead, tr, th, td, article, aside,
-canvas, details, figure, figcaption,
-footer, header, hgroup, menu, nav,
-output, section, summary, time, mark,
-audio, video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  font: inherit;
-  vertical-align: baseline; }
 
-p {
-  white-space: pre-wrap; }
 
-html, body {
-  background-color: #A3F7BF; }
 
-body {
+/*body {
   min-height: 100%;
   position: fixed;
   overflow-y: scroll;
-  width: 100%; }
+  width: 100%; }*/
 
-#welcome-screen {
-  height: 100vh;
-  width: 100vw;
-  background-color: #385380;
-  position: relative;
-  z-index: 5; }
 
-/*.hidden {
-	background-color: white;
-	z-index: -5;
-}*/
-#welcome-text {
-  width: 36rem;
-  position: absolute;
-  top: 40%;
-  left: 10%; }
-
-.welcome-message {
-  font-family: Roboto Mono;
-  font-size: 4rem;
-  color: #A8D966; }
-
-#container {
-  position: absolute;
-  width: 50%;
-  height: 500px;
-  line-height: 300px;
-  font-size: 50px;
-  text-align: center;
-  /*    left: 50%;
-      top: 100px;*/
-  /*margin-left: -25%;*/ }
-
-#puppies {
-  width: 20%;
-  height: 20%; }
 
 /*# sourceMappingURL=main.css.map */
