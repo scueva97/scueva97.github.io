@@ -1,0 +1,23 @@
+/* Margins, padding, borders */
+
+.content {
+  	margin: 0 auto;
+  	max-width: 748px;
+}
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+          border-radius: $radius;
+}
+
+.rounded-box {
+	/*border: 2px solid;*/
+	@include border-radius($main-font-size * .2);
+    background: $main-color3;
+}
+
+/*.container-center {
+	margin: 0 auto;
+}*/

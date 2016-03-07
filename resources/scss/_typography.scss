@@ -1,52 +1,46 @@
 $roboto: 'Roboto Mono';
 $scp: 'Source Code Pro';
 
-/*html, body {
+$main-font-size: 5rem;
+$golden-ration: 1.618rem;
+
+html, body {
   background-color: $main-color1;
-}*/
+  font-family: $roboto;
+  font-size: 20px;
+  color: $main-color3;
+}
+
+h1 {
+  font-size: $main-font-size;
+  font-weight: bold;
+}
+
+h2 {
+  font-size: $main-font-size * .6;
+}
 
 p {
-  white-space: pre-wrap; 
+  white-space: pre-wrap;
+  line-height: $golden-ration;
 }
+
 
 #welcome-screen {
   background-color: $main-color1;
 }
 
 .welcome-message {
-  font-family: $roboto;
-  font-size: 4rem;
+  font-family: $scp;
+  font-size: (8/9) * $main-font-size;
+  /*line-height: normal;*/
   color: $main-color3;
 }
 
-/*h1 {
-  font-family: "Playfair Display";
-  font-size: 4rem;
-  line-height: 4rem;
+.text-center {
+  text-align: center;
 }
 
-a {
-  color: $blue;
+#description-slot-machine {
+  font-size: $main-font-size * .5;
 }
-
-h2 {
-  color: $gray;
-  font-family: "Roboto Condensed";
-  font-style: italic;
-  font-weight: 300;
-
-  a {
-    color: $gray;
-  }
-}
-*/
-/*Functions!!*/
-/*a:hover {
-  color: lighten($blue, 20%);
-}
-
-.content {
-  font-family: "Roboto Condensed";
-  font-size: 1rem;
-  line-height: 1.618rem;
-}*/

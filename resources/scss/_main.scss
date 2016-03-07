@@ -18,35 +18,3 @@ audio, video {
   font: inherit;
   vertical-align: baseline;
 }
- 
-html, body {
-  background-color: $main-color1;
-}
-
-/*h1 {
-  border-bottom: 1px solid $gray;
-  margin-bottom: 1rem;
-  margin-top: 5rem;
-  padding-bottom: 1rem;
-}
-
-h2 {
-  padding-bottom: 0.5rem;
-  margin-bottom: 2rem;
-}*/
-
-.content {
-  margin: 0 auto;
-  max-width: 748px;
-}
-
-#slide-up-wrapper {
-  position: absolute;
-  display: none;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  font-size: 50px;
-  text-align: center;
-}

@@ -19,79 +19,47 @@ audio, video {
   vertical-align: baseline; }
 
 html, body {
-  background-color: #385380; }
+  background-color: #385380;
+  font-family: "Roboto Mono";
+  font-size: 20px;
+  color: #A8D966; }
 
-/*h1 {
-  border-bottom: 1px solid $gray;
-  margin-bottom: 1rem;
-  margin-top: 5rem;
-  padding-bottom: 1rem;
-}
+h1 {
+  font-size: 5rem;
+  font-weight: bold; }
 
 h2 {
-  padding-bottom: 0.5rem;
-  margin-bottom: 2rem;
-}*/
-.content {
-  margin: 0 auto;
-  max-width: 748px; }
+  font-size: 3rem; }
 
-#slide-up-wrapper {
-  position: absolute;
-  display: none;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  font-size: 50px;
-  text-align: center; }
-
-/*html, body {
-  background-color: $main-color1;
-}*/
 p {
-  white-space: pre-wrap; }
+  white-space: pre-wrap;
+  line-height: 1.618rem; }
 
 #welcome-screen {
   background-color: #385380; }
 
 .welcome-message {
-  font-family: "Roboto Mono";
-  font-size: 4rem;
+  font-family: "Source Code Pro";
+  font-size: 4.44444rem;
+  /*line-height: normal;*/
   color: #A8D966; }
 
-/*h1 {
-  font-family: "Playfair Display";
-  font-size: 4rem;
-  line-height: 4rem;
-}
+.text-center {
+  text-align: center; }
 
-a {
-  color: $blue;
-}
+#description-slot-machine {
+  font-size: 2.5rem; }
 
-h2 {
-  color: $gray;
-  font-family: "Roboto Condensed";
-  font-style: italic;
-  font-weight: 300;
-
-  a {
-    color: $gray;
-  }
-}
-*/
-/*Functions!!*/
-/*a:hover {
-  color: lighten($blue, 20%);
-}
-
-.content {
-  font-family: "Roboto Condensed";
-  font-size: 1rem;
-  line-height: 1.618rem;
-}*/
 /* Position and size of elements */
+#slide-up-wrapper {
+  position: absolute;
+  display: none;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vw;
+  text-align: center; }
+
 #welcome-screen {
   height: 100vh;
   width: 100vw;
@@ -104,10 +72,32 @@ h2 {
   top: 40%;
   left: 10%; }
 
-#puppies {
-  width: 25%;
-  height: 25%; }
+#name {
+  /*width: $main-font-size * 10;*/
+  /*top: 50%;*/
+  /*transform: translateY(-50%);*/ }
 
+.table-cell {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle; }
+
+/* Margins, padding, borders */
+.content {
+  margin: 0 auto;
+  max-width: 748px; }
+
+.rounded-box {
+  /*border: 2px solid;*/
+  -webkit-border-radius: 1rem;
+  -moz-border-radius: 1rem;
+  -ms-border-radius: 1rem;
+  border-radius: 1rem;
+  background: #A8D966; }
+
+/*.container-center {
+	margin: 0 auto;
+}*/
 @media screen and (max-width: 1024px) {
   html, body {
     font-size: 16px; } }

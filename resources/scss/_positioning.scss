@@ -1,5 +1,14 @@
 /* Position and size of elements */
 
+#slide-up-wrapper {
+	position: absolute;
+	display: none;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vw;
+	text-align: center;
+}
 
 #welcome-screen {
 	height: 100vh;
@@ -9,13 +18,20 @@
 }
 
 #welcome-text {
-  width: 36rem;
-  position: absolute;
-  top: 40%;
-  left: 10%; 
+  	width: 36rem;
+  	position: absolute;
+	top: 40%;
+	left: 10%; 
 }
 
-#puppies {
-  width: 25%;
-  height: 25%; 
+#name {
+	/*width: $main-font-size * 10;*/
+	/*top: 50%;*/
+  	/*transform: translateY(-50%);*/
+}
+
+.table-cell {
+	display: table-cell;
+	text-align: center;
+	vertical-align: middle;
 }

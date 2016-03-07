@@ -14,10 +14,10 @@ $(document).ready(function() {
 	if (getUrlParameter(URL_WLCM_PARAM) !== URL_WLCM_PARAM_STOP)
 		welcomeAnim();
 	else {
-		//$('#slide-up-wrapper').css("display", "block");
-		$('#slide-up-wrapper').show();
+		$('#slide-up-wrapper').css("display", "table");
 		$('#welcome-screen').hide();
 	}
+	startTextFlipInX();
 });
 
 function toggleScrolling(toggle) {
@@ -94,6 +94,14 @@ function welcomeAnim() {
 	function slideUpFirstPage() {
 		$('#slide-up-wrapper').toggle("slide", { direction: "down" }, 1500);
 	}
+}
+
+function startTextFlipInX() {
+	$("#description-flipX").Morphext({
+		animation: "flipInX",
+		separator: ",",
+		speed: 3500
+	});
 }
 
 /**
