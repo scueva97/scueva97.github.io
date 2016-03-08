@@ -1,4 +1,4 @@
-var welcomeMessages = ["Website in", "progress..."]
+var welcomeMessages = ["var message =", "  'Welcome!';", "console.log(message);"]
 var lines = new Array();
 for(i = 0; i < welcomeMessages.length; i++) {
 	lines[i] = "wmline" + i;
