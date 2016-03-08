@@ -18,6 +18,17 @@ $(document).ready(function() {
 		$('#welcome-screen').hide();
 	}
 	startTextFlipInX();
+
+	
+	$('.business-icon').hover( function () {
+		var src = $(this).attr('src');
+		if (src.indexOf('-hover') >= 0) {
+			$(this).attr('src', src.replace('-hover', '') );			
+		} else {
+			$(this).attr('src', src.replace(/\.png/, '-hover.png') );
+		}
+        
+   	});
 });
 
 function toggleScrolling(toggle) {
