@@ -18,6 +18,10 @@
     background: $main-color3;
 }
 
-/*.container-center {
-	margin: 0 auto;
-}*/
+#name {
+	padding-bottom: $main-font-size * .1;
+	margin-bottom: $main-font-size * .1;
+	padding-left: $main-font-size;
+	padding-right: $main-font-size;
+	border-bottom: 2px solid;
+}

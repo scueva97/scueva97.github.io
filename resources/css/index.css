@@ -18,6 +18,7 @@ audio, video {
   font: inherit;
   vertical-align: baseline; }
 
+/*$golden-ration: 1.618rem;*/
 html, body {
   background-color: #385380;
   font-family: "Roboto Mono";
@@ -32,8 +33,7 @@ h2 {
   font-size: 3rem; }
 
 p {
-  white-space: pre-wrap;
-  line-height: 1.618rem; }
+  white-space: pre-wrap; }
 
 #welcome-screen {
   background-color: #385380; }
@@ -41,14 +41,10 @@ p {
 .welcome-message {
   font-family: "Source Code Pro";
   font-size: 4.44444rem;
-  /*line-height: normal;*/
   color: #A8D966; }
 
 .text-center {
   text-align: center; }
-
-#description-slot-machine {
-  font-size: 2.5rem; }
 
 /* Position and size of elements */
 #slide-up-wrapper {
@@ -57,7 +53,7 @@ p {
   top: 0;
   left: 0;
   width: 100vw;
-  height: 100vw;
+  height: 100vh;
   text-align: center; }
 
 #welcome-screen {
@@ -72,15 +68,28 @@ p {
   top: 40%;
   left: 10%; }
 
-#name {
-  /*width: $main-font-size * 10;*/
-  /*top: 50%;*/
-  /*transform: translateY(-50%);*/ }
-
 .table-cell {
   display: table-cell;
   text-align: center;
   vertical-align: middle; }
+
+/* Center a div inside a an element block */
+.block {
+  text-align: center;
+  white-space: nowrap; }
+
+.block:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  margin-right: -0.25em;
+  /* Adjusts for spacing */ }
+
+.container-centered {
+  display: inline-block;
+  vertical-align: middle;
+  /*width: 300px;*/ }
 
 /* Margins, padding, borders */
 .content {
@@ -95,9 +104,13 @@ p {
   border-radius: 1rem;
   background: #A8D966; }
 
-/*.container-center {
-	margin: 0 auto;
-}*/
+#name {
+  padding-bottom: 0.5rem;
+  margin-bottom: 0.5rem;
+  padding-left: 5rem;
+  padding-right: 5rem;
+  border-bottom: 2px solid; }
+
 @media screen and (max-width: 1024px) {
   html, body {
     font-size: 16px; } }

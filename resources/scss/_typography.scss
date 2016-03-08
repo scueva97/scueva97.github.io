@@ -2,7 +2,7 @@ $roboto: 'Roboto Mono';
 $scp: 'Source Code Pro';
 
 $main-font-size: 5rem;
-$golden-ration: 1.618rem;
+/*$golden-ration: 1.618rem;*/
 
 html, body {
   background-color: $main-color1;
@@ -22,7 +22,6 @@ h2 {
 
 p {
   white-space: pre-wrap;
-  line-height: $golden-ration;
 }
 
 
@@ -33,14 +32,9 @@ p {
 .welcome-message {
   font-family: $scp;
   font-size: (8/9) * $main-font-size;
-  /*line-height: normal;*/
   color: $main-color3;
 }
 
 .text-center {
   text-align: center;
-}
-
-#description-slot-machine {
-  font-size: $main-font-size * .5;
 }

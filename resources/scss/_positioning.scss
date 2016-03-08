@@ -6,7 +6,7 @@
 	top: 0;
 	left: 0;
 	width: 100vw;
-	height: 100vw;
+	height: 100vh;
 	text-align: center;
 }
 
@@ -24,14 +24,26 @@
 	left: 10%; 
 }
 
-#name {
-	/*width: $main-font-size * 10;*/
-	/*top: 50%;*/
-  	/*transform: translateY(-50%);*/
-}
-
 .table-cell {
 	display: table-cell;
 	text-align: center;
 	vertical-align: middle;
+}
+
+/* Center a div inside a an element block */
+.block {
+  text-align: center;
+  white-space: nowrap;
+}
+.block:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  margin-right: -0.25em; /* Adjusts for spacing */
+}
+.container-centered {
+  display: inline-block;
+  vertical-align: middle;
+  /*width: 300px;*/
 }

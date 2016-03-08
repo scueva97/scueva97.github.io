@@ -14,7 +14,7 @@ $(document).ready(function() {
 	if (getUrlParameter(URL_WLCM_PARAM) !== URL_WLCM_PARAM_STOP)
 		welcomeAnim();
 	else {
-		$('#slide-up-wrapper').css("display", "table");
+		$('#slide-up-wrapper').show();
 		$('#welcome-screen').hide();
 	}
 	startTextFlipInX();
@@ -49,13 +49,11 @@ function welcomeAnim() {
 			+ '<span style="background-color: ' 
 			+ colorPattern[2] + '; color: ' + colorPattern[0] + '">' 
 			+ lastChar +'</span>');
-		//console.log(idxChar.toString() + " " + idxLine.toString());
 
 		idxChar++;
 		if (idxChar >= welcomeMessages[idxLine].length) {
 			idxLine++;
 			if (idxLine >= welcomeMessages.length) {
-				//console.log("Stop");
 				clearInterval(printId);
 				flickerId = setInterval(charFlicker, 500, line, message, lastChar);
 				setTimeout(finishLoadScreen, 2000);
@@ -83,7 +81,6 @@ function welcomeAnim() {
 	
 	function finishLoadScreen() {
 		$('#welcome-screen').fadeOut(500, function() {
-			console.log("Fade");
 			clearInterval(flickerId);
 			slideUpFirstPage();
 			toggleScrolling(true);
