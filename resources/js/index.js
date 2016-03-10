@@ -1,16 +1,22 @@
-var welcomeMessages = ["var message =", "  'Welcome!';", "console.log(message);"]
+var welcomeMessages = ["Hello there stranger. ", "Welcome to my website!"]
 var lines = new Array();
 for(i = 0; i < welcomeMessages.length; i++) {
 	lines[i] = "wmline" + i;
 }
+var pageAnchorTags = ['Home', 'About', 'Projects', 'Experience'];
 var colorPattern = ['#385380', '#43A367', '#A8D966', '#C6F1A2'];
 // Parameter name and value to indicate the user has already been welcomed
 var URL_WLCM_PARAM = "wlcm";
 var URL_WLCM_PARAM_STOP = "done";
 
+/**
+* Once the document has loaded, begin the page setup
+*/
 $(document).ready(function() {
 	fullpageSetUp();
 
+	// If this is the first time the user enters the website, then play the animation
+	// Else, go straight to the contents
 	if (getUrlParameter(URL_WLCM_PARAM) !== URL_WLCM_PARAM_STOP)
 		welcomeAnim();
 	else {
@@ -19,7 +25,9 @@ $(document).ready(function() {
 	}
 	startTextFlipInX();
 
-	
+	/**
+	* Changes to lighter-colored icons when hover over them
+	*/
 	$('.business-icon').hover( function () {
 		var src = $(this).attr('src');
 		if (src.indexOf('-hover') >= 0) {
@@ -31,29 +39,35 @@ $(document).ready(function() {
    	});
 });
 
+/**
+* Enable scrolling if true, disable if false
+*/
 function toggleScrolling(toggle) {
 	$.fn.fullpage.setAllowScrolling(toggle);
 	$.fn.fullpage.setKeyboardScrolling(toggle);
 }
 
+/**
+* Animation user sees when the page is first loaded
+*/
 function welcomeAnim() {
-	//$('#welcome-screen').on('click', finishLoadScreen);
-
 	toggleScrolling(false);
 
+	var typingDelay = 100;
 	var idxLine = 0;
 	var idxChar = 0;
 	var flicker = true;
 	var flickerId;
-	var printId = setInterval(periodicalPrint, 100);
+	var printId = setInterval(periodicalPrint, typingDelay);
 
 	function periodicalPrint() {
 		if (idxChar == 0 && idxLine > 0) {
 			$("#"+lines[idxLine - 1]).html(welcomeMessages[idxLine - 1]);
 		}
 
-		var message = welcomeMessages[idxLine].substring(0, idxChar);
-		var lastChar = welcomeMessages[idxLine].charAt(idxChar);
+		var welcomeLine = welcomeMessages[idxLine];
+		var message = welcomeLine.substring(0, idxChar);
+		var lastChar = welcomeLine.charAt(idxChar);
 		var line = lines[idxLine];
 
 		$("#"+line).html(message 
@@ -67,7 +81,7 @@ function welcomeAnim() {
 			if (idxLine >= welcomeMessages.length) {
 				clearInterval(printId);
 				flickerId = setInterval(charFlicker, 500, line, message, lastChar);
-				setTimeout(finishLoadScreen, 2000);
+				setTimeout(finishLoadScreen, 2500);
 			} else {
 				idxChar = 0;
 			}
@@ -104,6 +118,9 @@ function welcomeAnim() {
 	}
 }
 
+/**
+* Starts the transition animation among headliners after the welcoming animation
+*/
 function startTextFlipInX() {
 	$("#description-flipX").Morphext({
 		animation: "flipInX",
@@ -164,12 +181,16 @@ function getUrlParameter(sParam) {
     }
 }
 
+/**
+* Initializes the fullpage plugin
+* All possible properties are shown, those commented out use default
+*/
 function fullpageSetUp() {
 	$('#fullpage').fullpage({
         //Navigation
         // menu: '#menu',
         // lockAnchors: false,
-        anchors:['firstPage', 'secondPage', 'thirdPage', 'fourthPage'],
+        anchors: pageAnchorTags,
         // navigation: false,
         // navigationPosition: 'right',
         // navigationTooltips: ['firstSlide', 'secondSlide'],

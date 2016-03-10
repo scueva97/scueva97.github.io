@@ -18,7 +18,7 @@
 }
 
 #welcome-text {
-  	width: 36rem;
+  	width: $main-font-size * 10;
   	position: absolute;
 	top: 30%;
 	left: 10%; 
@@ -45,4 +45,9 @@
 .container-centered {
   display: inline-block;
   vertical-align: middle;
+}
+
+.business-icon {
+	width: $main-font-size;
+	height: $main-font-size;
 }
