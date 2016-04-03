@@ -48,6 +48,7 @@ function parseResponse(resp) {
   }
 
   //$('#tags').text(tags.toString().replace(/,/g, ', '));
+  getRecipe(tags);
   writeTable(tags, probs);
   return tags;
 }
@@ -70,4 +71,39 @@ function writeTable(tags, probs) {
         var tr = $('<tr/>').appendTo(table);
         tr.append('<td>' + tags[i] + '</td>').append('<td>' + probs[i] + '</td>');
     }
+}
+
+function jsonCallback(data) {
+  parseRecipeResponse(data);
+}
+
+function getRecipe(tags) {
+  var data = {
+    'app_id': CLIENT_ID_FOOD,
+    'app_key': CLIENT_KEY_FOOD,
+    'q': tags.slice(0,5).join(),
+  };
+  return $.ajax({
+    'url': 'https://api.edamam.com/search',
+    'data': data,
+    'dataType': 'jsonp',
+    'jsonpCallback': 'jsonCallback',
+    'type': 'GET'
+  });
+}
+
+function parseRecipeResponse(resp) {
+  var recipe = '';
+  var recipeURL = '';
+  //if (resp.status_code === 'OK') {
+    var results = resp.hits;
+    recipe = results[0].label;
+    recipeURL = results[0].url;
+  //} else {
+  //  console.log('Sorry, something is wrong.');
+  //}
+
+  $('#recipe-name').text(recipe);
+  $('#recipe-url').attr('href', recipeURL);
+  //return tags;
 }
