@@ -1,0 +1,45 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>HackNY API Test</title>
+	<!-- Fonts: Roboto Mono, Source Code Pro -->
+	<link href='https://fonts.googleapis.com/css?family=Roboto+Mono:400,700' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
+	<!-- Main stylesheet -->
+	<link rel="stylesheet" type="text/css" href="resources/css/index.css"/>
+	
+	<!-- jQuery -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<!-- jQuery UI -->
+	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+
+	<script type="text/javascript" src="keys.js"></script>
+  	<script type="text/javascript" src="clarifai.js"></script>
+</head>
+<body>
+	<h1> Submit Image </h1>
+	<p> Please </p>
+	<form>
+  		Food: <input type="text" id="food" placeholder="Image URL"<br>
+  		<input type="submit" id="submit" value="Submit">
+	</form>
+	<div id="tags"></div>
+
+	<table style="width:100%" id="results-table">
+	  	
+	</table>
+
+	<script type="text/javascript">
+	$(document).ready( function() {
+		$( "form" ).submit(function( e ) {
+  			var url = $("input:first").val();
+ 			
+			run(url);
+			e.preventDefault();
+		});
+	});
+	</script>
+
+</body>
+</html>
