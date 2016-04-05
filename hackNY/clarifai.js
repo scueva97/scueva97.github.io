@@ -54,8 +54,8 @@ function parseResponse(resp) {
 }
 
 function run(imgurl) {
-  if (localStorage.getItem('tokenTimeStamp') - Math.floor(Date.now() / 1000) > 86400
-    || localStorage.getItem('accessToken') === null) {
+  if (localStorage.getItem('tokenTimestamp') - Math.floor(Date.now() / 1000) > 86400
+    || localStorage.getItem('accessToken') == null) {
     getCredentials(function() {
       postImage(imgurl);
     });
@@ -135,7 +135,7 @@ function getRecipeText(url) {
     'data': data,
     //'dataType': 'json',
     'headers' : {
-      'X-Mashape-Key': '52641VWCNPmshGDtEunr2LczbXhtp1jav5Sjsn9bHLwkulJw4i',
+      'X-Mashape-Key': CLIENT_SPOON,
     },
     'type': 'GET'
   }).then(function (res) {
