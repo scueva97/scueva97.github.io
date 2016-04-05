@@ -78,23 +78,41 @@ function jsonCallback(data) {
 }
 
 function getRecipe(tags) {
+  // var data = {
+  //   'app_id': CLIENT_ID_FOOD,
+  //   'app_key': CLIENT_KEY_FOOD,
+  //   'q': tags.slice(0,5).join(),
+  // };
+  // return $.ajax({
+  //   'url': 'https://api.edamam.com/search',
+  //   'data': data,
+  //   'dataType': 'jsonp',
+  //   'jsonpCallback': 'jsonCallback',
+  //   'type': 'GET'
+  // });
+
   var data = {
-    'app_id': CLIENT_ID_FOOD,
-    'app_key': CLIENT_KEY_FOOD,
-    'q': tags.slice(0,5).join(),
+    'query': tags.slice(0,3).join(),
+    'number': '10',
   };
   return $.ajax({
-    'url': 'https://api.edamam.com/search',
+    'url': 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search',
     'data': data,
-    'dataType': 'jsonp',
-    'jsonpCallback': 'jsonCallback',
+    //'dataType': 'json',
+    'headers' : {
+      'X-Mashape-Key': '52641VWCNPmshGDtEunr2LczbXhtp1jav5Sjsn9bHLwkulJw4i',
+    },
     'type': 'GET'
+  }).then(function (res) {
+    console.log(res.results[0].title);
+    //parseRecipeResponse(res);
   });
 }
 
 function parseRecipeResponse(resp) {
-  var recipe = '';
-  var recipeURL = '';
+  var recipeName = resp.results[0].title;
+  var url = createUrl(recipeName, resp.results[0].id);
+  var recipeText = getRecipeText(url);
   //if (resp.status_code === 'OK') {
     var results = resp.hits;
     recipe = results[0].label;
@@ -103,7 +121,32 @@ function parseRecipeResponse(resp) {
   //  console.log('Sorry, something is wrong.');
   //}
 
-  $('#recipe-name').text(recipe);
-  $('#recipe-url').attr('href', recipeURL);
+  $('#recipe-name').text(recipeName);
+  $('#recipe-text').text(recipeText);
   //return tags;
+}
+
+function getRecipeText(url) {
+  var data = {
+    'url': url
+  };
+  return $.ajax({
+    'url': 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/extract',
+    'data': data,
+    //'dataType': 'json',
+    'headers' : {
+      'X-Mashape-Key': '52641VWCNPmshGDtEunr2LczbXhtp1jav5Sjsn9bHLwkulJw4i',
+    },
+    'type': 'GET'
+  }).then(function (res) {
+    return res.text;
+    //parseRecipeResponse(res);
+  });
+}
+
+function createUrl(name, id) {
+  var url = "https://spoonacular.com/recipes/";
+  var foodId = (name + " " + id).replace(/\s/g, "-").replace(/([!@#$%^&*()+=\[\]\\';,./{}|":<>?~_-])/g, "\\$1");
+  return url + foodId;
+
 }
