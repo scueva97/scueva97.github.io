@@ -50,13 +50,15 @@ p {
   text-decoration: none; }
 
 /* Position and size of elements */
+.window-size {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; }
+
 #slide-up-wrapper {
   position: absolute;
   display: none;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
   text-align: center; }
 
 #welcome-screen {
@@ -96,6 +98,10 @@ p {
 .business-icon {
   width: 4.5rem;
   height: 4.5rem; }
+
+.framed {
+  position: absolute;
+  padding: 2em; }
 
 /* Margins, padding, borders */
 .content {

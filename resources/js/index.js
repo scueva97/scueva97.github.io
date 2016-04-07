@@ -1,4 +1,4 @@
-var welcomeMessages = ["Hello there stranger. ", "Welcome to my website!"]
+var welcomeMessages = ["Website in ", "progress..."]
 var lines = new Array();
 for(i = 0; i < welcomeMessages.length; i++) {
 	lines[i] = "wmline" + i;
