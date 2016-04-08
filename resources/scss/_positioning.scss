@@ -1,5 +1,10 @@
 /* Position and size of elements */
 
+p {
+	padding: 0.5rem 0;
+    position: relative;
+}
+
 .window-size {
 	top: 0;
 	left: 0;
@@ -57,5 +62,5 @@
 
 .framed {
     position: absolute;
-    padding: 2em;
+    padding: 3em;
 }
