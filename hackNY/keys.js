@@ -1,7 +1,0 @@
-var CLIENT_ID = 'qvqO9gSYnFVeOQ0TlULBD3DbtMpapVejDUuBqI1K';
-var CLIENT_SECRET = 'ap3jygHwsuTrFEZzzhNPZOFYo-prBMKbjC6_Muox';
-
-var CLIENT_ID_FOOD = '167052f0';
-var CLIENT_KEY_FOOD = '9de2b7e6ae96937af139a444c601096d';
-
-var CLIENT_SPOON = '52641VWCNPmshGDtEunr2LczbXhtp1jav5Sjsn9bHLwkulJw4i';
